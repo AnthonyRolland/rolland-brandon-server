@@ -13,7 +13,7 @@ export const typeDef = `
     pseudo: String
     password: String
     token: String
-    projects: [Project]
+    restaurants: [Restaurant]
   }
 
   input UserInput{
