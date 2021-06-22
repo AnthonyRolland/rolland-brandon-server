@@ -29,7 +29,7 @@ export const typeDef = `
   }
 
   extend type Mutation {
-    createMeal(name: String!,description: String!): Boolean
+    createMeal(name: String!,description: String!,type: String!,price: Int!): Boolean
     createMealWithInput(input: MealInput!): Meal
     deleteMeal(_id: ID!): Boolean
     updateMeal(_id: ID!,input: MealInput!): Meal
@@ -65,7 +65,7 @@ export const resolvers = {
   Mutation: {
     createMeal: async (root, args, context, info) => {
       await Meal.create(args);
-      return Meal.name;
+      return true;
     },
     createMealWithInput: async (root, { input }, context, info) => {
       //input.password = await bcrypt.hash(input.password, 10);

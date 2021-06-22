@@ -41,7 +41,7 @@ export const resolvers = {
     restaurantSchemaAssert: async () => {
       return "Restaurant schema";
     },
-    restaurant: async () => {
+    restaurants: async () => {
       var test =  await Restaurant.find().populate('meals');
       console.log(test)
       return test;
