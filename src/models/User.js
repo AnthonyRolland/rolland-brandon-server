@@ -6,9 +6,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: String,
   surname: String,
-  pseudo: String,
-  password: String,
-  token: String,
+  login: String,
+  pass: String,
   restaurants: [{ type: Schema.Types.ObjectId, ref: 'Restaurant' }],
 }, {collection:'User'});
 

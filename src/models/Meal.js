@@ -3,9 +3,6 @@ const Schema = mongoose.Schema;
 
 const mealSchema = new Schema({
     name: String,
-    description: String,
-    type: String,
-    price: Number,
 }, {collection:'Meal'});
 
 
