@@ -30,8 +30,7 @@ export const typeDef = `
     createRestaurant(name: String!,slogan: String!): Boolean
     createRestaurantWithInput(input: RestaurantInput!): Restaurant
     deleteRestaurant(_id: ID!): Boolean
-    updateRestaurant(_id: ID!,input: RestaurantInput!): Restaurant
-    addMealToRestaurant(_id: ID!,input: MealInput!): Boolean
+    updateRestaurant(_id: ID!,input: RestaurantInput!): String
   }
 
 `;
@@ -68,18 +67,10 @@ export const resolvers = {
     },
 
     updateRestaurant: async (root, { _id, input }) => {
-      return Restaurant.findByIdAndUpdate(_id, input, { new: true });
+      await Restaurant.findByIdAndUpdate(_id, input, { new: true });
+
+      return Restaurant.name;
     },
       
-    addMealToRestaurant: async (root, { _id, input }) => {
-      var meal = await Meal.create(input);
-      var restaurant = await Restaurant.findByIdAndUpdate(_id,{
-        $push: {
-          meals: meal
-        }
-      })
-      restaurant.save();
-      return true;
-    },
   },
 };
